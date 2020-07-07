@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  photogallery:
+    build: PhotoGallery/
+    depends_on:
+      - 'database'
+    ports:
+      - '3004:3004'
+
+  calendar:
+    build: Calendar/
+    depends_on:
+      - 'database'
+    ports:
+      - '3001:3001'
+
+  reviews:
+    build: Reviews/
+    depends_on:
+      - 'database'
+    ports:
+      - '3002:3002'
+
+  carousel:
+    build: Carousel/
+    depends_on:
+      - 'database'
+    ports:
+      - '3003:3003'
+
+  proxy:
+    build: proxy-server/
+    ports:
+      - '3000:3000'
+
+  database:
+    image: mongo:latest
